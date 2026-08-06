@@ -4,3 +4,7 @@
 .env.*
 *.log
 node_modules/
+
+# source photo used for the sketch-to-photo reveal experiment (not part of the live site)
+IMG_2089.JPG
+images/story/houses.jpg
