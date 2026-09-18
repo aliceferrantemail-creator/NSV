@@ -3,116 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reservations | Nira Surf Villas</title>
-<link rel="stylesheet" href="css/style.css">
+<title>Reserve | Nira Surf Villas, Scar Reef</title>
+<meta name="description" content="Book Nira Surf Villas at Scar Reef, West Sumbawa — by WhatsApp or Booking.com.">
+<link rel="stylesheet" href="css/style.css?v=20260807c">
 </head>
-<body>
+<body class="ed">
 
-<nav class="site-nav">
+<nav class="site-nav nav-overlay">
   <div class="nav-inner">
-    <a href="index.html" class="logo">Nira <span>Surf</span> Villas</a>
-    <ul class="nav-links">
-      <li><a href="rooms.html">Rooms</a></li>
-      <li><a href="amenities.html">Amenities</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="booking.html" class="nav-cta">Book Now</a>
-    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <div class="nav-left">
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="rooms.html">Villas</a></li>
+        <li><a href="amenities.html">The Wave</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="in-menu-only"><a href="booking.html" class="active">Reserve</a></li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="logo" aria-label="Nira Surf Villas — home">
+      <img src="images/logo.png" alt="Nira Surf Villas" width="520" height="145">
+    </a>
+
+    <div class="nav-right">
+      <a href="booking.html" class="link-ghost active">Reserve</a>
+    </div>
   </div>
 </nav>
 
-<header class="page-hero" style="background-image:url('images/hero-booking.jpg')">
-  <div class="page-hero-content">
-    <span class="eyebrow">Check Availability</span>
-    <h1>Reservations</h1>
+<header class="hero-page">
+  <div class="hero-media">
+    <img src="images/reserve/hero.jpg" alt="A surfboard floating in the pool" fetchpriority="high">
   </div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Check Availability</span>
+    <h1>Reserve</h1>
+  </div>
+
+  <div class="scroll-cue"><span>Scroll</span></div>
 </header>
 
-<section>
-  <div class="container" style="max-width:760px;">
-    <div class="section-intro">
-      <p>Tell us your dates and which villa you have in mind. We reply within 24 hours to confirm availability and lock in your stay.</p>
-    </div>
-
-    <form data-fake-submit>
-      <div class="form-grid">
-        <div>
-          <label for="checkin">Check-In</label>
-          <input type="date" id="checkin" name="checkin" required>
-        </div>
-        <div>
-          <label for="checkout">Check-Out</label>
-          <input type="date" id="checkout" name="checkout" required>
-        </div>
-        <div>
-          <label for="guests">Guests</label>
-          <select id="guests" name="guests">
-            <option>1 Guest</option>
-            <option>2 Guests</option>
-            <option>3 Guests</option>
-            <option>4 Guests</option>
-          </select>
-        </div>
-        <div>
-          <label for="room">Room / Villa</label>
-          <select id="room" name="room">
-            <option>Ocean Suite</option>
-            <option>Surf Loft</option>
-            <option>Garden Villa</option>
-            <option>Penthouse Villa</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div>
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="full">
-          <label for="notes">Notes (optional)</label>
-          <textarea id="notes" name="notes" placeholder="Surf lessons, dietary needs, airport pickup, anything else..."></textarea>
-        </div>
-      </div>
-
-      <div style="margin-top:2rem;">
-        <button type="submit" class="btn btn-solid">Request Reservation</button>
-      </div>
-
-      <div class="form-note">
-        Thank you &mdash; your request has been noted. Our team will email you within 24 hours to confirm availability and next steps.
-      </div>
-    </form>
+<section class="prose-block" style="padding-bottom:70px;">
+  <div class="prose-inner reveal">
+    <h2>Three ways to book</h2>
+    <p>Message us directly and we will hold dates for you, or book instantly through Booking.com. Rates change with the season, so ask &mdash; we will quote you properly.</p>
+    <div class="rule-gold"></div>
   </div>
 </section>
 
-<footer>
-  <div class="container footer-grid">
-    <div>
-      <span class="footer-logo">Nira Surf Villas</span>
-      <p>Playa Coyote, Guanacaste<br>Costa Rica</p>
+<section style="background:var(--bone); padding:0 0 130px;">
+  <div class="channels reveal">
+    <div class="channel">
+      <h3>Direct &mdash; fastest</h3>
+      <span class="val">WhatsApp</span>
+      <p>Tell us your dates and how many of you there are. Best if you want both villas, a longer stay, or an airport transfer.</p>
+      <a class="link-ghost on-light" style="margin-top:0.8rem;" href="https://wa.me/6282199003855?text=Hi!%20I%27d%20like%20to%20book%20a%20stay%20at%20Nira%20Surf%20Villas.%20My%20dates%20are%3A" target="_blank" rel="noopener">Message us</a>
     </div>
-    <div>
-      <h4>Explore</h4>
-      <p><a href="rooms.html">Rooms &amp; Villas</a></p>
-      <p><a href="amenities.html">Amenities</a></p>
-      <p><a href="gallery.html">Gallery</a></p>
+    <div class="channel">
+      <h3>Booking.com</h3>
+      <span class="val">9.9 / 10</span>
+      <p>Instant confirmation, and the reviews are there to read. &ldquo;Exceptional&rdquo; from 10 verified stays.</p>
+      <a class="link-ghost on-light" style="margin-top:0.8rem;" href="https://www.booking.com/hotel/id/nira-surf-villas.html" target="_blank" rel="noopener">View listing</a>
     </div>
-    <div>
-      <h4>Contact</h4>
-      <p><a href="mailto:stay@nirasurfvillas.com">stay@nirasurfvillas.com</a></p>
-      <p><a href="tel:+50600000000">+506 0000 0000</a></p>
+    <div class="channel">
+      <h3>Instagram</h3>
+      <span class="val">@nirasurfvillas</span>
+      <p>DMs are open. Good for a quick question before you settle on dates.</p>
+      <a class="link-ghost on-light" style="margin-top:0.8rem;" href="https://www.instagram.com/nirasurfvillas/" target="_blank" rel="noopener">Message on Instagram</a>
     </div>
   </div>
-  <div class="container footer-bottom">
-    <span>&copy; 2026 Nira Surf Villas. All rights reserved.</span>
-    <span>Designed for slow mornings and long sets.</span>
-  </div>
-</footer>
+</section>
 
-<script src="js/main.js"></script>
+<section class="split">
+  <div class="split-media reveal">
+    <img src="images/reserve/split.jpg" alt="Villa bedroom with timber bed and rattan wardrobe">
+  </div>
+  <div class="split-copy reveal">
+    <span class="panel-label">Before you book</span>
+    <h2>What to know</h2>
+    <p>Two villas, each about 50 m&sup2;, each with air conditioning, a private bathroom with hot water, and a terrace. The pool, garden, kitchen and laundry are shared between them &mdash; so if you take both, the whole place is yours.</p>
+    <p class="meta-line">Check in 15:00&ndash;18:00 &middot; Check out 08:00&ndash;11:00<br>Children welcome &middot; No pets &middot; Non-smoking</p>
+    <a href="rooms.html" class="link-ghost on-light">See the villas</a>
+  </div>
+</section>
+
+<section class="prose-block">
+  <div class="prose-inner reveal" style="max-width:900px;">
+    <h2>The details</h2>
+  </div>
+  <dl class="info-grid reveal">
+    <div>
+      <dt>Arrival</dt>
+      <dd>Check in between 15:00 and 18:00. Minimum age to check in is 18. Tell us your flight and we will sort the rest.</dd>
+      <dt>Departure</dt>
+      <dd>Check out between 08:00 and 11:00.</dd>
+      <dt>Transfers</dt>
+      <dd>Airport transfer from SMKIII (about 132 km) can be arranged on request, charged separately.</dd>
+    </div>
+    <div>
+      <dt>House rules</dt>
+      <dd>Children of all ages are welcome. No pets. Non-smoking throughout. No parties or stag/hen groups.</dd>
+      <dt>Included</dt>
+      <dd>Breakfast made to order each morning, Starlink, pool, parking, and use of the kitchen and washing machine.</dd>
+      <dt>Rates</dt>
+      <dd>They move with the season and length of stay. Message us and we will quote you for your dates.</dd>
+    </div>
+  </dl>
+</section>
+
+<section class="closing">
+  <div class="prose-inner reveal">
+    <h2>Tell us your dates</h2>
+    <p class="lede">Send us when you want to come and how many of you there are. We will come back with what is free and what it costs.</p>
+    <a href="https://wa.me/6282199003855?text=Hi!%20I%27d%20like%20to%20book%20a%20stay%20at%20Nira%20Surf%20Villas.%20My%20dates%20are%3A" class="link-ghost" target="_blank" rel="noopener">Message on WhatsApp</a>
+  </div>
+
+  <div class="closing-meta">
+    <span>Beru, Jereweh &middot; West Sumbawa, Indonesia</span>
+    <span>
+      <a href="https://www.instagram.com/nirasurfvillas/" target="_blank" rel="noopener">@nirasurfvillas</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://wa.me/6282199003855" target="_blank" rel="noopener">+62 821-9900-3855</a>
+    </span>
+    <span>&copy; 2026 Nira Surf Villas</span>
+  </div>
+</section>
+
+<a href="https://wa.me/6282199003855?text=Hi!%20I%27m%20interested%20in%20booking%20a%20stay%20at%20Nira%20Surf%20Villas." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2.004 6.482 2.004 12c0 1.85.505 3.586 1.386 5.07L2 22l5.06-1.362A9.94 9.94 0 0 0 12.004 22C17.522 22 22.004 17.518 22.004 12S17.522 2 12.004 2zm0 18.056a8.02 8.02 0 0 1-4.352-1.28l-.312-.196-3.003.808.802-2.928-.203-.302A8.03 8.03 0 1 1 20.033 12a8.033 8.033 0 0 1-8.03 8.056z"/></svg>
+</a>
+
+<script src="js/main.js?v=20260807c"></script>
 </body>
 </html>

@@ -3,44 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery | Nira Surf Villas</title>
-<link rel="stylesheet" href="css/style.css">
+<title>Gallery | Nira Surf Villas, Scar Reef</title>
+<meta name="description" content="Photographs of Nira Surf Villas — two villas at Scar Reef, West Sumbawa, Indonesia.">
+<link rel="stylesheet" href="css/style.css?v=20260807c">
 </head>
-<body>
+<body class="ed">
 
-<nav class="site-nav">
+<nav class="site-nav nav-overlay">
   <div class="nav-inner">
-    <a href="index.html" class="logo">Nira <span>Surf</span> Villas</a>
-    <ul class="nav-links">
-      <li><a href="rooms.html">Rooms</a></li>
-      <li><a href="amenities.html">Amenities</a></li>
-      <li><a href="gallery.html" class="active">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="booking.html" class="nav-cta">Book Now</a>
-    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <div class="nav-left">
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="rooms.html">Villas</a></li>
+        <li><a href="amenities.html">The Wave</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="in-menu-only"><a href="booking.html">Reserve</a></li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="logo" aria-label="Nira Surf Villas — home">
+      <img src="images/logo.png" alt="Nira Surf Villas" width="520" height="145">
+    </a>
+
+    <div class="nav-right">
+      <a href="booking.html" class="link-ghost">Reserve</a>
+    </div>
   </div>
 </nav>
 
-<header class="page-hero" style="background-image:url('images/hero-gallery.jpg')">
-  <div class="page-hero-content">
-    <span class="eyebrow">A Closer Look</span>
+<header class="hero-page">
+  <div class="hero-media">
+    <img src="images/gallery/hero.jpg" alt="The villas and pool beneath the mountain" fetchpriority="high">
+  </div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">A Closer Look</span>
     <h1>Gallery</h1>
   </div>
+
+  <div class="scroll-cue"><span>Scroll</span></div>
 </header>
 
-<section>
-  <div class="container gallery-grid">
-    <img src="images/gallery/gallery-1.jpg" alt="Nira Surf Villas gallery photo 1">
-    <img src="images/gallery/gallery-2.jpg" alt="Nira Surf Villas gallery photo 2">
-    <img src="images/gallery/gallery-3.jpg" alt="Nira Surf Villas gallery photo 3">
-    <img src="images/gallery/gallery-4.jpg" alt="Nira Surf Villas gallery photo 4">
-    <img src="images/gallery/gallery-5.jpg" alt="Nira Surf Villas gallery photo 5">
-    <img src="images/gallery/gallery-6.jpg" alt="Nira Surf Villas gallery photo 6">
-    <img src="images/gallery/gallery-7.jpg" alt="Nira Surf Villas gallery photo 7">
-    <img src="images/gallery/gallery-8.jpg" alt="Nira Surf Villas gallery photo 8">
-    <img src="images/gallery/gallery-9.jpg" alt="Nira Surf Villas gallery photo 9">
-  </div>
+<section class="grid-photos">
+  <img class="wide" src="images/gallery/01-villas-wide.jpg" alt="The villas at dusk, seen across the pool">
+  <img src="images/gallery/02-villas-dusk.jpg" alt="The two thatched villas at dusk">
+  <img src="images/gallery/03-villas-peak.jpg" alt="The villas and pool beneath the mountain peak">
+  <img src="images/gallery/04-pool-surfboard.jpg" alt="A surfboard floating in the pool">
+  <img src="images/gallery/05-thatch-view.jpg" alt="View out to the pool from under the thatched roof">
+  <img src="images/gallery/06-bedroom.jpg" alt="Villa bedroom with timber bed and rattan wardrobe">
+  <img src="images/gallery/07-bedroom-daybed.jpg" alt="Villa bedroom with a daybed by the window">
+  <img src="images/gallery/08-terrace.jpg" alt="Open living area opening onto the terrace">
+  <img src="images/gallery/09-room-board.jpg" alt="A board leaning against the wall of a room">
+  <img src="images/gallery/10-pool-terrace.jpg" alt="The terrace and pool">
+  <img src="images/gallery/11-bath-stone.jpg" alt="Stone basin and mirror in the bathroom">
+  <img src="images/gallery/12-outdoor-shower.jpg" alt="Outdoor shower open to the sky">
+  <img src="images/gallery/13-lamps.jpg" alt="Woven rattan pendant lamps against dark beams">
+  <img src="images/gallery/14-journal-table.jpg" alt="Coffee and a surf journal on a carved table">
+  <img src="images/gallery/15-chair-table.jpg" alt="Leather chair and round table">
+  <img src="images/gallery/16-pool-textile.jpg" alt="Textile draped over the rail by the pool">
+  <img src="images/gallery/17-umbrella-peak.jpg" alt="A parasol on the lawn beneath the mountain">
 </section>
 
 <div class="lightbox">
@@ -48,30 +69,46 @@
   <img src="" alt="">
 </div>
 
-<footer>
-  <div class="container footer-grid">
-    <div>
-      <span class="footer-logo">Nira Surf Villas</span>
-      <p>Playa Coyote, Guanacaste<br>Costa Rica</p>
-    </div>
-    <div>
-      <h4>Explore</h4>
-      <p><a href="rooms.html">Rooms &amp; Villas</a></p>
-      <p><a href="amenities.html">Amenities</a></p>
-      <p><a href="gallery.html">Gallery</a></p>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <p><a href="mailto:stay@nirasurfvillas.com">stay@nirasurfvillas.com</a></p>
-      <p><a href="tel:+50600000000">+506 0000 0000</a></p>
-    </div>
+<section class="insta">
+  <div class="reveal">
+    <h2>Follow along</h2>
+    <a href="https://www.instagram.com/nirasurfvillas/" class="handle" target="_blank" rel="noopener">@nirasurfvillas</a>
   </div>
-  <div class="container footer-bottom">
-    <span>&copy; 2026 Nira Surf Villas. All rights reserved.</span>
-    <span>Designed for slow mornings and long sets.</span>
-  </div>
-</footer>
 
-<script src="js/main.js"></script>
+  <div class="insta-grid reveal">
+    <a href="https://www.instagram.com/nirasurfvillas/reel/DaZ5WMkNgSr/" target="_blank" rel="noopener"><img src="images/instagram/DaZ5WMkNgSr.jpg" alt="Instagram reel — pool and mountain" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/p/DQJdxo2jD4P/" target="_blank" rel="noopener"><img src="images/instagram/DQJdxo2jD4P.jpg" alt="Instagram post, October 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/p/DP05dphjM_q/" target="_blank" rel="noopener"><img src="images/instagram/DP05dphjM_q.jpg" alt="Instagram post, October 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/p/DPvylP4DHwp/" target="_blank" rel="noopener"><img src="images/instagram/DPvylP4DHwp.jpg" alt="Instagram post, October 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/p/DPS0eUCCGjJ/" target="_blank" rel="noopener"><img src="images/instagram/DPS0eUCCGjJ.jpg" alt="Instagram post, October 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/p/DPRSEEbiFwU/" target="_blank" rel="noopener"><img src="images/instagram/DPRSEEbiFwU.jpg" alt="Instagram post, October 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/p/DPN1uJ5AfIz/" target="_blank" rel="noopener"><img src="images/instagram/DPN1uJ5AfIz.jpg" alt="Instagram post, September 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/reel/DNcug7WoS-7/" target="_blank" rel="noopener"><img src="images/instagram/DNcug7WoS-7.jpg" alt="Instagram reel, August 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/reel/DNaad1goTIL/" target="_blank" rel="noopener"><img src="images/instagram/DNaad1goTIL.jpg" alt="Instagram reel, August 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/reel/DM-dHE6Il7o/" target="_blank" rel="noopener"><img src="images/instagram/DM-dHE6Il7o.jpg" alt="Instagram reel, August 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/p/DMxIpd-BaOK/" target="_blank" rel="noopener"><img src="images/instagram/DMxIpd-BaOK.jpg" alt="Instagram post, July 2025" loading="lazy"></a>
+    <a href="https://www.instagram.com/nirasurfvillas/reel/DMvDvA2hFIU/" target="_blank" rel="noopener"><img src="images/instagram/DMvDvA2hFIU.jpg" alt="Instagram reel, July 2025" loading="lazy"></a>
+  </div>
+
+  <a href="https://www.instagram.com/nirasurfvillas/" class="link-ghost" target="_blank" rel="noopener">Follow on Instagram</a>
+</section>
+
+<section class="closing">
+  <div class="closing-meta">
+    <span>Beru, Jereweh &middot; West Sumbawa, Indonesia</span>
+    <span>
+      <a href="https://www.instagram.com/nirasurfvillas/" target="_blank" rel="noopener">@nirasurfvillas</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://wa.me/6282199003855" target="_blank" rel="noopener">+62 821-9900-3855</a>
+    </span>
+    <span>&copy; 2026 Nira Surf Villas</span>
+  </div>
+</section>
+
+<a href="https://wa.me/6282199003855?text=Hi!%20I%27m%20interested%20in%20booking%20a%20stay%20at%20Nira%20Surf%20Villas." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2.004 6.482 2.004 12c0 1.85.505 3.586 1.386 5.07L2 22l5.06-1.362A9.94 9.94 0 0 0 12.004 22C17.522 22 22.004 17.518 22.004 12S17.522 2 12.004 2zm0 18.056a8.02 8.02 0 0 1-4.352-1.28l-.312-.196-3.003.808.802-2.928-.203-.302A8.03 8.03 0 1 1 20.033 12a8.033 8.033 0 0 1-8.03 8.056z"/></svg>
+</a>
+
+<script src="js/main.js?v=20260807c"></script>
 </body>
 </html>

@@ -8,3 +8,8 @@ node_modules/
 # source photo used for the sketch-to-photo reveal experiment (not part of the live site)
 IMG_2089.JPG
 images/story/houses.jpg
+
+# Full-resolution masters and camera RAWs. Kept locally for re-exporting, never
+# served by the site, and far too large for the repo (~90 MB). Back these up
+# separately — see images/README.md.
+_originals/

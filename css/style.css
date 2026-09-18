@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Work+Sans:wght@200;300;400;500&display=swap');
 
 :root {
   --cream: #faf5ec;
@@ -427,6 +427,32 @@ footer a:hover { color: var(--gold); }
   color: rgba(255,255,255,0.55);
 }
 
+/* ---------- WhatsApp float button ---------- */
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  z-index: 999;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .grid-3, .grid-4, .grid-2 { grid-template-columns: 1fr 1fr; }
@@ -458,4 +484,958 @@ footer a:hover { color: var(--gold); }
   .form-grid { grid-template-columns: 1fr; }
   h1 { font-size: 2.2rem; }
   .strip { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   EDITORIAL LAYER — full-frame imagery, minimal chrome, understated links.
+   Scoped to new class names so the legacy pages keep rendering unchanged.
+   ========================================================================== */
+
+:root {
+  --forest: #16302a;
+  --forest-deep: #0d1f1b;
+  --bone: #f6f1e7;
+}
+
+.ed {
+  font-family: 'Work Sans', 'Jost', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+.ed h1, .ed h2, .ed h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.08;
+}
+
+/* ---------- Overlay nav ---------- */
+.nav-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none; /* a hard rule is what made this read as a "bar" */
+  will-change: transform;  /* JS drives transform per-frame; keep it off transition */
+  transition:
+    background 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-backdrop-filter 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.55s ease;
+}
+
+/* Unscrolled: no bar at all, just a breath of shade so white type holds
+   against a bright hero. Fades out once the glass takes over. */
+.nav-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(13,31,27,0.42) 0%, rgba(13,31,27,0) 100%);
+  opacity: 1;
+  transition: opacity 0.55s ease;
+}
+.nav-overlay.scrolled::before { opacity: 0; }
+
+/* Three columns with the logo in the middle one. The 1fr side columns are equal
+   regardless of their contents, so the logo stays optically centred even as the
+   links and the Reserve button change width. */
+.nav-overlay .nav-inner {
+  max-width: none;
+  padding: 18px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-overlay .nav-left  { display: flex; align-items: center; justify-content: flex-start; min-width: 0; }
+.nav-overlay .nav-right { display: flex; align-items: center; justify-content: flex-end;  min-width: 0; }
+
+.nav-overlay .nav-links { gap: 2rem; margin: 0; flex-wrap: nowrap; }
+
+/* The logo is the one element that must survive every breakpoint. */
+.nav-overlay .logo {
+  display: block;
+  line-height: 0;
+  flex: none;
+}
+.nav-overlay .logo img {
+  display: block;
+  width: auto;
+  height: 34px;
+  max-width: 46vw;      /* never let it crowd the edges on tiny screens */
+  object-fit: contain;
+  transition: height 0.3s ease;
+}
+
+/* Narrow desktops: tighten the sides before the mobile breakpoint takes over */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .nav-overlay .nav-inner { padding: 16px 24px; gap: 1rem; }
+  .nav-overlay .nav-links { gap: 1.2rem; }
+  .nav-overlay .nav-links a { font-size: 0.64rem; letter-spacing: 0.12em; }
+  .nav-overlay .logo img { height: 30px; }
+  .nav-overlay .link-ghost { padding: 9px 16px; font-size: 0.6rem; letter-spacing: 0.14em; }
+}
+
+.nav-overlay .logo,
+.nav-overlay .nav-links a { color: #fff; }
+.nav-overlay .logo span { color: var(--sand); }
+.nav-overlay .nav-links a:hover { color: var(--sand); }
+.nav-overlay .nav-toggle { color: #fff; }
+
+.nav-overlay .nav-links a {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-weight: 300;
+}
+
+/* Scrolled: frosted glass, not a block.
+   The saturate() is what sells it — it pulls colour through from whatever is
+   passing underneath, so the bar feels lit rather than painted on.
+   Tint sits at 0.58: light enough to stay glassy, dark enough that white type
+   still clears WCAG AA (~4.9:1) when the cream sections pass beneath it. */
+.nav-overlay.scrolled {
+  background:
+    linear-gradient(180deg, rgba(26,52,45,0.66) 0%, rgba(13,31,27,0.70) 100%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  backdrop-filter: blur(24px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.16),   /* top highlight — the glass edge */
+    inset 0 -1px 0 rgba(255,255,255,0.05),
+    0 10px 34px rgba(8,20,17,0.20);         /* soft lift, replaces the border */
+}
+
+/* Without backdrop-filter there is no blur to carry legibility, so fall back
+   to a solid tint rather than leaving white text floating on photography. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav-overlay.scrolled {
+    background: rgba(13,31,27,0.92);
+  }
+}
+
+/* Understated outline link — the only "button" in the design */
+.link-ghost {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #fff;
+  padding: 11px 26px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 300;
+  background: transparent;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.link-ghost:hover { background: #fff; color: var(--forest-deep); border-color: #fff; }
+
+.link-ghost.on-light { border-color: rgba(22,48,42,0.4); color: var(--forest); }
+.link-ghost.on-light:hover { background: var(--forest); color: #fff; border-color: var(--forest); }
+
+/* Small circular arrow — replaces chunky CTAs inside panels */
+.arrow-link {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.arrow-link:hover { background: #fff; color: var(--forest-deep); transform: translate(2px, -2px); }
+
+/* ---------- Full-viewport hero ---------- */
+.hero-full {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-full .hero-slideshow { position: absolute; inset: 0; }
+
+.hero-media { position: absolute; inset: 0; }
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+/* Two-part scrim: a radial pool behind the headline plus a linear pass for the
+   nav and lower edge. Tuned against the hero's measured luminance (115 behind
+   the headline, 169 at the eyebrow) to clear WCAG AA for white type while
+   still letting the golden-hour colour through. */
+.hero-full::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 82% 66% at 50% 46%,
+      rgba(13,31,27,0.42) 0%,
+      rgba(13,31,27,0.24) 58%,
+      rgba(13,31,27,0) 100%),
+    linear-gradient(180deg,
+      rgba(13,31,27,0.5) 0%,
+      rgba(13,31,27,0.14) 30%,
+      rgba(13,31,27,0.18) 62%,
+      rgba(13,31,27,0.62) 100%);
+}
+
+.hero-full .hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 28px;
+  max-width: 1100px;
+  margin: 0;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 1.6rem;
+  font-weight: 300;
+  text-shadow: 0 1px 12px rgba(13,31,27,0.5);
+}
+
+.hero-full h1 {
+  color: #fff;
+  font-size: clamp(2.9rem, 8.5vw, 7rem);
+  margin: 0 0 0.35em;
+  font-weight: 300;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.35);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.75;
+}
+
+/* Scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+/* Hand-painted brushstroke instead of a drawn line. The PNG is black on a
+   transparent ground, so it is used as a MASK and coloured from CSS — that way
+   it can be recoloured (or faded) without re-exporting the artwork. */
+.scroll-cue span::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 42px;
+  margin: 12px auto 0;
+  background: #fff;
+  -webkit-mask: url('../images/scroll-brush.png') no-repeat center center;
+  mask: url('../images/scroll-brush.png') no-repeat center center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform-origin: top center;
+  animation: cue 3.2s ease-in-out infinite;
+}
+
+/* Almost all of the beat is opacity. The scale is barely there — just enough
+   to keep it feeling alive, without the stroke visibly growing and shrinking. */
+@keyframes cue {
+  0%, 100% { opacity: 0.45; transform: scaleY(0.96); }
+  50%      { opacity: 0.9;  transform: scaleY(1); }
+}
+
+/* ---------- Airy prose ---------- */
+.prose-block {
+  background: var(--bone);
+  padding: 140px 0;
+  text-align: center;
+}
+
+.prose-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.prose-block h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  color: var(--forest);
+  margin-bottom: 1.2em;
+}
+
+.prose-block p {
+  font-size: 1rem;
+  line-height: 2;
+  color: rgba(22,48,42,0.78);
+  margin-bottom: 1.6em;
+}
+
+/* The home intro carries the only two handoffs on the page, so they sit as a
+   centred pair. Wraps to a stack on narrow screens rather than squeezing. */
+.prose-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* The same hand-painted stroke as the scroll cue, masked and filled with --gold
+   instead of white, and drawn at the same 6x42 as the cue — scaled up to the old
+   90px rule height it read as a blot rather than a mark. Static, not pulsing:
+   the beat belongs to the scroll cue, where it means "keep going". */
+.rule-gold {
+  width: 6px;
+  height: 42px;
+  margin: 3.5rem auto 0;
+  background: var(--gold);
+  -webkit-mask: url('../images/scroll-brush.png') no-repeat center center;
+  mask: url('../images/scroll-brush.png') no-repeat center center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  opacity: 0.8;
+}
+
+/* ---------- Full-bleed panels ---------- */
+.panel {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  overflow: hidden;
+  padding: 90px 0;
+}
+
+.panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13,31,27,0.72) 0%, rgba(13,31,27,0.25) 55%, rgba(13,31,27,0.1) 100%);
+}
+
+.panel.align-right::after {
+  background: linear-gradient(270deg, rgba(13,31,27,0.72) 0%, rgba(13,31,27,0.25) 55%, rgba(13,31,27,0.1) 100%);
+}
+
+.panel-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+}
+
+.panel-copy { max-width: 420px; }
+.panel.align-right .panel-inner { display: flex; justify-content: flex-end; }
+.panel.align-right .panel-copy { text-align: right; }
+
+.panel-label {
+  display: block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.64rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 1.4rem;
+  font-weight: 300;
+}
+
+.panel h2 {
+  color: #fff;
+  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+  margin-bottom: 0.5em;
+}
+
+.panel p {
+  font-size: 0.96rem;
+  line-height: 1.95;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.8em;
+}
+
+.panel-meta {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 2.2rem;
+  display: block;
+}
+
+/* ---------- Full-bleed gallery band ---------- */
+.band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.band-2 { grid-template-columns: repeat(2, 1fr); }
+
+/* ---------- Split: portrait image + copy ----------
+   The property photography is all shot vertically, so a full-bleed landscape
+   crop would throw most of each frame away. The split lets a portrait image
+   run full height beside the text instead. */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  background: var(--bone);
+}
+
+.split-media { position: relative; overflow: hidden; min-height: 78vh; }
+.split-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.split-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* stop the ghost link stretching the column width */
+  padding: 90px 8%;
+}
+
+.split-copy h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  color: var(--forest);
+  margin-bottom: 0.7em;
+}
+
+.split-copy p {
+  font-size: 0.98rem;
+  line-height: 2;
+  color: rgba(22,48,42,0.78);
+  margin-bottom: 1.5em;
+  max-width: 420px;
+}
+
+.split-copy .panel-label { color: var(--coral); }
+
+.split.reverse .split-media { order: 2; }
+
+.split-dark { background: var(--forest-deep); }
+.split-dark h2 { color: #fff; }
+.split-dark p { color: rgba(255,255,255,0.75); }
+.split-dark .panel-label { color: var(--sand); }
+
+.meta-line {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(22,48,42,0.5);
+  line-height: 2.2;
+  margin-bottom: 2rem;
+}
+.split-dark .meta-line { color: rgba(255,255,255,0.55); }
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .split.reverse .split-media { order: 0; }
+  .split-media { min-height: 60vh; }
+  .split-copy { padding: 64px 28px; }
+  .split-copy p { max-width: none; }
+}
+
+.amenity-line {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7) !important;
+  margin-bottom: 2.2rem !important;
+}
+
+.band a {
+  position: relative;
+  display: block;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+.band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s cubic-bezier(0.2,0.7,0.3,1);
+}
+
+.band a:hover img { transform: scale(1.06); }
+
+.band a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(13,31,27,0.18);
+  transition: background 0.4s ease;
+}
+.band a:hover::after { background: rgba(13,31,27,0.05); }
+
+.band-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 30px;
+  z-index: 2;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Quiet closing / footer ---------- */
+.closing {
+  background: var(--forest-deep);
+  color: rgba(255,255,255,0.85);
+  padding: 130px 0 60px;
+  text-align: center;
+}
+
+.closing h2 {
+  color: #fff;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin-bottom: 1.4rem;
+}
+
+.closing .lede {
+  max-width: 440px;
+  margin: 0 auto 2.6rem;
+  line-height: 1.95;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+}
+
+.closing-meta {
+  margin-top: 5rem;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 48px;
+  padding-right: 48px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.closing-meta a { color: rgba(255,255,255,0.65); }
+.closing-meta a:hover { color: var(--sand); }
+
+/* ---------- Interior page hero ----------
+   Full viewport, same as the home hero: at 66vh the photograph read as clipped
+   and the page below started before the frame had landed. The type stays a step
+   under .hero-full so home remains the statement page. */
+.hero-page {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+.hero-page .hero-media { position: absolute; inset: 0; }
+.hero-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 52%, rgba(13,31,27,0.5) 0%, rgba(13,31,27,0.3) 60%, rgba(13,31,27,0.1) 100%),
+    linear-gradient(180deg, rgba(13,31,27,0.6) 0%, rgba(13,31,27,0.15) 40%, rgba(13,31,27,0.45) 100%);
+}
+.hero-page .hero-content { position: relative; z-index: 2; padding: 0 28px; }
+.hero-page h1 {
+  color: #fff;
+  /* 6.2vw, not 7 — at 7 the longest title ("The Wave & The Days") measured the
+     full content width exactly and wrapped on any rounding. */
+  font-size: clamp(2.4rem, 6.2vw, 5.4rem);
+  margin: 0;
+  font-weight: 300;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+}
+
+/* ---------- Editorial gallery grid ---------- */
+.grid-photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 6px;
+  background: var(--bone);
+}
+.grid-photos img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 0.35s ease, transform 0.9s cubic-bezier(0.2,0.7,0.3,1);
+}
+.grid-photos img:hover { opacity: 0.92; transform: scale(1.02); }
+.grid-photos .wide { grid-column: span 2; aspect-ratio: 3/2; }
+
+/* ---------- Contact / booking channels ---------- */
+.channels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(22,48,42,0.14);
+  max-width: 1180px;
+  margin: 0 auto;
+  border: 1px solid rgba(22,48,42,0.14);
+}
+.channel {
+  background: var(--bone);
+  padding: 46px 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+.channel h3 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(22,48,42,0.5);
+  margin: 0;
+  font-weight: 400;
+}
+.channel .val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--forest);
+  line-height: 1.3;
+}
+.channel p {
+  font-size: 0.88rem;
+  color: rgba(22,48,42,0.65);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: left; /* don't inherit the centred prose-block alignment */
+}
+.info-grid dt {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 0.5rem;
+}
+.info-grid dd {
+  margin: 0 0 1.8rem;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: rgba(22,48,42,0.78);
+}
+
+@media (max-width: 900px) {
+  .grid-photos { grid-template-columns: repeat(2, 1fr); }
+  .grid-photos .wide { grid-column: span 2; }
+  .channels { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; gap: 0; padding: 0 28px; }
+}
+
+/* ---------- Map ----------
+   Google's default map styling is far brighter than the rest of the site, so it
+   is desaturated and warmed slightly to sit with the palette. It returns to full
+   colour on hover/focus, when the visitor actually wants to read it. */
+.map-band { position: relative; background: var(--forest-deep); }
+
+.map-embed {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  overflow: hidden;
+  background: var(--forest-deep);
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: grayscale(0.72) sepia(0.14) contrast(1.02) brightness(0.98);
+  transition: filter 0.6s ease;
+}
+
+.map-embed:hover iframe,
+.map-embed:focus-within iframe { filter: none; }
+
+/* thin inner edge so the map reads as an inset panel, not a raw iframe */
+.map-embed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
+}
+
+.map-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 26px 48px 0;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.map-note a { color: rgba(255,255,255,0.72); }
+.map-note a:hover { color: var(--sand); }
+
+@media (max-width: 900px) {
+  .map-embed { height: 320px; }
+  .map-note { padding: 22px 28px 0; justify-content: center; text-align: center; }
+}
+
+/* ---------- Guest quotes ---------- */
+.quotes { background: var(--bone); padding: 130px 0 140px; }
+
+.quotes-head { text-align: center; margin-bottom: 4.5rem; padding: 0 28px; }
+
+.score {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 4.6rem);
+  color: var(--forest);
+  line-height: 1;
+  margin: 0.2em 0 0.3em;
+}
+.score span { font-size: 0.34em; color: rgba(22,48,42,0.45); }
+
+.score-note {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(22,48,42,0.55);
+}
+
+.quote-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 40px;
+  columns: 3;
+  column-gap: 2.6rem;
+}
+
+.quote {
+  break-inside: avoid;
+  margin: 0 0 2.6rem;
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid rgba(22,48,42,0.13);
+}
+
+.quote p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.22rem;
+  line-height: 1.62;
+  color: var(--forest);
+  font-style: italic;
+  margin: 0 0 1.1rem;
+}
+
+.quote .translated {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.84rem;
+  font-style: normal;
+  line-height: 1.75;
+  color: rgba(22,48,42,0.6);
+  margin: -0.4rem 0 1.1rem;
+}
+
+.quote cite {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-style: normal;
+  color: rgba(22,48,42,0.5);
+}
+.quote cite b { font-weight: 500; color: var(--forest); }
+
+.quotes-foot { text-align: center; margin-top: 1.5rem; }
+
+/* ---------- Instagram ---------- */
+.insta { background: var(--forest-deep); padding: 120px 0 130px; text-align: center; }
+.insta h2 { color: #fff; font-size: clamp(1.8rem, 3.6vw, 2.7rem); margin-bottom: 0.4em; }
+.insta .handle {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 3.4rem;
+  display: inline-block;
+}
+
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  max-width: 1180px;
+  margin: 0 auto 3.2rem;
+  padding: 0 40px;
+}
+
+.insta-grid a {
+  position: relative;
+  display: block;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.insta-grid img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2,0.7,0.3,1), opacity 0.4s ease;
+  opacity: 0.88;
+}
+.insta-grid a:hover img { transform: scale(1.07); opacity: 1; }
+
+@media (max-width: 900px) {
+  .quote-grid { columns: 1; max-width: 520px; padding: 0 28px; }
+  .quotes { padding: 90px 0 100px; }
+  .insta-grid { grid-template-columns: repeat(3, 1fr); padding: 0 20px; }
+  .insta { padding: 84px 0 90px; }
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.2,0.7,0.3,1);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- Editorial responsive ---------- */
+@media (max-width: 900px) {
+  .band { grid-template-columns: 1fr; }
+  .band a { aspect-ratio: 16/10; }
+  .panel { min-height: 78vh; }
+  .panel-inner { padding: 0 28px; }
+  .panel.align-right .panel-inner { justify-content: flex-start; }
+  .panel.align-right .panel-copy { text-align: left; }
+  .panel::after,
+  .panel.align-right::after {
+    background: linear-gradient(180deg, rgba(13,31,27,0.35) 0%, rgba(13,31,27,0.78) 100%);
+  }
+  .prose-block { padding: 90px 0; }
+  .closing-meta { flex-direction: column; align-items: center; text-align: center; padding-left: 28px; padding-right: 28px; }
+}
+
+/* ---------- Nav shrink order ----------
+   As the header narrows, elements fall away in priority order. The logo is the
+   one thing that never does — it only scales down.
+     1. inline links   -> collapse into the hamburger   (<= 900px)
+     2. Reserve button -> moves inside the open menu    (<= 560px)
+   The hamburger itself always stays, otherwise the site becomes unnavigable. */
+
+.in-menu-only { display: none; }   /* Reserve duplicate, only for the mobile menu */
+
+@media (max-width: 900px) {
+  .nav-overlay .nav-links { display: none; }
+  .nav-overlay .nav-toggle { display: block; }
+  .nav-overlay .nav-inner { padding: 14px 20px; gap: 0.7rem; }
+  .nav-overlay .logo img { height: 30px; }
+  .nav-overlay .link-ghost { padding: 8px 14px; font-size: 0.58rem; letter-spacing: 0.12em; }
+
+  /* dropdown panel, matching the glass of the bar itself */
+  .nav-overlay.site-nav.open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(13,31,27,0.95);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    backdrop-filter: blur(22px) saturate(160%);
+    padding: 22px 24px 26px;
+    gap: 1.15rem;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .nav-overlay.site-nav.open .nav-links a {
+    color: #fff;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Reserve leaves the bar; the empty 1fr column stays so the logo remains centred */
+  .nav-overlay .nav-right { visibility: hidden; }
+  .nav-overlay.site-nav.open .in-menu-only { display: block; }
+  .nav-overlay .logo img { height: 27px; }
+  .nav-overlay .nav-inner { padding: 12px 16px; }
+}
+
+@media (max-width: 700px) {
+  .hero-full, .hero-page { min-height: 520px; }
+  .hero-eyebrow { letter-spacing: 0.28em; font-size: 0.58rem; }
+  .hero-full h1 { font-size: clamp(2.4rem, 11vw, 3.4rem); }
+  .hero-page h1 { font-size: clamp(2rem, 8vw, 2.9rem); }
+  .hero-sub { font-size: 0.92rem; max-width: 320px; }
+
+  /* Keep the WhatsApp bubble clear of the scroll cue */
+  .whatsapp-float { right: 18px; bottom: 18px; width: 50px; height: 50px; }
+  .whatsapp-float svg { width: 26px; height: 26px; }
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scroll-cue span::after { animation: none; }
+  .band img { transition: none; }
+  html { scroll-behavior: auto; }
 }
