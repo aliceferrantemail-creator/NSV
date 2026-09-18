@@ -1458,7 +1458,7 @@ footer a:hover { color: var(--gold); }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   /* The hairlines are the grid gap showing through; no outer border, so the
      lattice floats rather than reading as a boxed table. */
